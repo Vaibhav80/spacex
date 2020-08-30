@@ -10,7 +10,9 @@ const ProgramCard = ({
   rocket,
   launch_success,
 }) => {
-  // links.mission_patch
+  // "links.mission_patch" is an image link, which is not available
+
+  const landSuccess = rocket.first_stage.cores[0].land_success;
 
   return (
     <div className="col-sm-12 col-md-6 col-lg-3 program-card">
@@ -35,11 +37,14 @@ const ProgramCard = ({
               <span>Launch Year:</span> {launch_year}
             </label>
             <label className="program-info">
-              <span>Successful Launch:</span> {`${launch_success}`}
+              <span>Successful Launch:</span>{" "}
+              {`${
+                launch_success !== null ? launch_success : "{launch_success}"
+              }`}
             </label>
             <label className="program-info">
               <span>Successful Landing:</span>{" "}
-              {`${rocket.first_stage.cores[0].land_success}`}
+              {`${landSuccess !== null ? landSuccess : "{land_success}"}`}
             </label>
           </Card.Description>
         </Card.Content>

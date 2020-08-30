@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { status, getYears } from "../utils";
+import {
+  status,
+  getYears,
+  LAUNCH_YEAR,
+  LAUNCH_SUCCESS,
+  LAND_SUCCESS,
+} from "../utils";
+import FilterLabel from "./FilterLabel";
 
 const Filter = ({ onFilterChange }) => {
   const [activeYear, setActiveYear] = useState("");
@@ -13,15 +20,15 @@ const Filter = ({ onFilterChange }) => {
     let data = "";
     let filterData = { ...filters };
     switch (key) {
-      case "launch_year":
+      case LAUNCH_YEAR:
         data = getActiveItem(activeYear, value);
         setActiveYear(data);
         break;
-      case "launch_success":
+      case LAUNCH_SUCCESS:
         data = getActiveItem(launchSuccess, value);
         setLaunchSuccess(data);
         break;
-      case "land_success":
+      case LAND_SUCCESS:
         data = getActiveItem(landSuccess, value);
         setLandSuccess(data);
         break;
@@ -50,17 +57,12 @@ const Filter = ({ onFilterChange }) => {
           {years &&
             years.map((year) => (
               <span className="col-6" key={year}>
-                <label
-                  name="year"
-                  className={`filter-label ${
-                    activeYear == year ? "active-label" : ""
-                  }`}
-                  onClick={() =>
-                    filterChanged({ key: "launch_year", value: year })
-                  }
-                >
-                  {year}
-                </label>
+                <FilterLabel
+                  name={LAUNCH_YEAR}
+                  value={year}
+                  onChange={filterChanged}
+                  active={activeYear}
+                />
               </span>
             ))}
         </div>
@@ -72,17 +74,12 @@ const Filter = ({ onFilterChange }) => {
           {status &&
             status.map((isLaunched) => (
               <span className="col-6" key={`launch${isLaunched}`}>
-                <label
-                  name="launch"
-                  className={`filter-label ${
-                    launchSuccess === isLaunched ? "active-label" : ""
-                  }`}
-                  onClick={() =>
-                    filterChanged({ key: "launch_success", value: isLaunched })
-                  }
-                >
-                  {isLaunched}
-                </label>
+                <FilterLabel
+                  name={LAUNCH_SUCCESS}
+                  value={isLaunched}
+                  onChange={filterChanged}
+                  active={launchSuccess}
+                />
               </span>
             ))}
         </div>
@@ -94,17 +91,12 @@ const Filter = ({ onFilterChange }) => {
           {status &&
             status.map((isLanded) => (
               <span className="col-6" key={`land${isLanded}`}>
-                <label
-                  name="land"
-                  className={`filter-label ${
-                    landSuccess === isLanded ? "active-label" : ""
-                  }`}
-                  onClick={() =>
-                    filterChanged({ key: "land_success", value: isLanded })
-                  }
-                >
-                  {isLanded}
-                </label>
+                <FilterLabel
+                  name={LAND_SUCCESS}
+                  value={isLanded}
+                  onChange={filterChanged}
+                  active={landSuccess}
+                />
               </span>
             ))}
         </div>

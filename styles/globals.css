@@ -33,7 +33,8 @@ h1.message {
   max-width: 500px;
   margin: 0 auto;
   text-align: center;
-  margin-top: 100px;
+  margin-top: 50px;
+  margin-bottom: 50px !important;
 }
 
 /* Filter CSS */
@@ -72,6 +73,10 @@ h1.message {
   margin-bottom: 20px;
 }
 
+.program-card .ui.card {
+  width: 100%;
+}
+
 .program-card .ui.card > .image,
 .ui.cards > .card > .image {
   margin: 1rem;
@@ -87,11 +92,13 @@ h1.message {
 .program-card .ui.card > .content .description {
   display: flex;
   flex-direction: column;
+  font-size: 1.2em !important;
 }
 
 .program-card .ui.card > .content .header {
   color: #06067c;
-  font-weight: 900;
+  font-weight: 900 !important;
+  font-size: 1.2em !important;
 }
 
 .program-info {
@@ -101,9 +108,9 @@ h1.message {
 .program-info span {
   font-weight: 600;
   color: #000;
+  margin-right: 10px;
 }
 
 .program-info ul {
   margin-bottom: 0;
 }
-

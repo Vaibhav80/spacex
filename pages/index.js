@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Loader, Dimmer } from "semantic-ui-react";
+import { fetchPrograms } from "./api/apis";
 import Filter from "../components/Filter";
 import Programs from "../components/Programs";
-import { fetchAllPrograms, filterPrograms } from "./api/apis";
-import { Loader, Dimmer } from "semantic-ui-react";
-import globalCSS from "../styles/global";
 
 export default function Home() {
   const [programs, setPrograms] = useState([]);
@@ -11,20 +10,18 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    fetchAllPrograms().then((response) => {
-      setLoading(false);
-      setPrograms(response);
-      setMessage(
-        response && response.length === 0 ? "No data found..." : undefined
-      );
-    });
+    fetchData({});
   }, []);
 
   const onFilterChange = (data) => {
     setPrograms([]);
+    fetchData(data);
+  };
+
+  const fetchData = (params) => {
     setLoading(true);
-    filterPrograms(data).then((response) => {
+    setMessage("");
+    fetchPrograms(params).then((response) => {
       setLoading(false);
       setPrograms(response);
       setMessage(
@@ -56,9 +53,6 @@ export default function Home() {
           {message && <h1 className="message">{message}</h1>}
         </div>
       </div>
-      <style jsx global>
-        {globalCSS}
-      </style>
     </div>
   );
 }

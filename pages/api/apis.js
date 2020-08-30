@@ -1,10 +1,6 @@
 const baseUrl = "https://api.spaceXdata.com/v3/launches?limit=100";
 
-const fetchAllPrograms = async () => {
-  return await fetch(baseUrl).then((res) => res.json());
-};
-
-const filterPrograms = async (data) => {
+const fetchPrograms = async (data) => {
   const url = baseUrl.concat(buildQueryString(data));
 
   return await fetch(url).then((res) => res.json());
@@ -21,4 +17,4 @@ const buildQueryString = (data) => {
   return queryString;
 };
 
-export { fetchAllPrograms, filterPrograms };
+export { fetchPrograms };

@@ -9,4 +9,8 @@ const getYears = () => {
 
 const status = ["True", "False"];
 
-export { getYears, status };
+const LAUNCH_YEAR = "launch_year";
+const LAUNCH_SUCCESS = "launch_success";
+const LAND_SUCCESS = "land_success";
+
+export { getYears, status, LAUNCH_SUCCESS, LAUNCH_YEAR, LAND_SUCCESS };

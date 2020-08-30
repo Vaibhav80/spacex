@@ -23,6 +23,10 @@ export default function Home() {
     setMessage("");
     fetchPrograms(params).then((response) => {
       setLoading(false);
+      if (!response) {
+        setMessage("Oops! An error occurred.");
+        return;
+      }
       setPrograms(response);
       setMessage(
         response && response.length === 0 ? "No data found..." : undefined

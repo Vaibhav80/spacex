@@ -34,7 +34,7 @@ export default function Home() {
     <div className="container-fluid">
       <div className="row">
         <div className="col-12">
-          <h2 className="app-header">SpaceX Launch program</h2>
+          <h2 className="app-header">SpaceX Launch Programs</h2>
         </div>
       </div>
       <div className="row">
@@ -52,6 +52,11 @@ export default function Home() {
 
           {message && <h1 className="message">{message}</h1>}
         </div>
+      </div>
+      <div className="row footer">
+        <p>
+          <span>Developed by:</span>Vaibhav Dhunde
+        </p>
       </div>
     </div>
   );

@@ -114,3 +114,17 @@ h1.message {
 .program-info ul {
   margin-bottom: 0;
 }
+
+/* Footer CSS */
+.footer {
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-size: 1.2em;
+  color: #000;
+}
+
+.footer p span {
+  font-weight: 700;
+  margin-right: 10px;
+}
